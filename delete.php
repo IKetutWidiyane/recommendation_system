@@ -4,7 +4,7 @@ include 'db.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Menghapus data atlet berdasarkan id
+  
     $sql = "DELETE FROM athletes WHERE id = $id";
 
     if ($conn->query($sql) === TRUE) {

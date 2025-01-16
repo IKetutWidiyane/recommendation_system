@@ -1,19 +1,18 @@
 <?php
 include 'db.php';
 
-// Mengambil data atlet berdasarkan id
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM athletes WHERE id = $id";
     $result = $conn->query($sql);
     $athlete = $result->fetch_assoc();
 } else {
-    // Redirect jika id tidak ditemukan
+  
     header("Location: recommendations.php");
     exit();
 }
 
-// Proses pembaruan data
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $strength_hand = $_POST['strength_hand'];
