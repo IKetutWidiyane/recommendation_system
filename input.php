@@ -19,6 +19,15 @@
         .alert {
             display: none;
         }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .form-column {
+            flex: 1;
+            min-width: 250px;
+        }
     </style>
 </head>
 <body>
@@ -31,105 +40,120 @@
         </div>
 
         <form id="athleteForm" action="process_input.php" method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="name" class="form-label">Nama Atlet:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nama Atlet:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="strength_hand" class="form-label">Kekuatan Lengan (Hand Dynamometer): (1-100)</label>
+                        <select class="form-control" id="strength_hand" name="strength_hand" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php for ($i = 1; $i <= 100; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            } ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="endurance_abs" class="form-label">Daya Tahan Perut (Sit Up): (1-100)</label>
+                        <select class="form-control" id="endurance_abs" name="endurance_abs" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php for ($i = 1; $i <= 100; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            } ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="endurance_arm" class="form-label">Daya Tahan Lengan (Push Up): (1-100)</label>
+                        <select class="form-control" id="endurance_arm" name="endurance_arm" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php for ($i = 1; $i <= 100; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            } ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="endurance_leg" class="form-label">Daya Tahan Tungkai (Squat Jump): (1-100)</label>
+                        <select class="form-control" id="endurance_leg" name="endurance_leg" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php for ($i = 1; $i <= 100; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            } ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-column">
+                    <div class="mb-3">
+                        <label for="strength_leg" class="form-label">Kekuatan Tungkai (Leg Dynamometer): (100-300)</label>
+                        <select class="form-control" id="strength_leg" name="strength_leg" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php for ($i = 100; $i <= 300; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            } ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="power_leg" class="form-label">Power Tungkai (Vertical Jump): (1-100)</label>
+                        <select class="form-control" id="power_leg" name="power_leg" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php for ($i = 1; $i <= 100; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            } ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="power_arm" class="form-label">Power Lengan (Medicine Ball): (1.00 - 10.00 detik)</label>
+                        <select class="form-control" id="power_arm" name="power_arm" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php 
+                            for ($i = 1.00; $i <= 10.00; $i += 0.01) {
+                                $value = number_format($i, 2, '.', ''); // Format menjadi 2 desimal
+                                echo "<option value='$value'>$value</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="flexibility" class="form-label">Fleksibilitas (Flexometer): (1-30)</label>
+                        <select class="form-control" id="flexibility" name="flexibility" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php for ($i = 1; $i <= 30; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            } ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="agility" class="form-label">Kelincahan (Shuttle Run): (1.00 - 60.00 detik)</label>
+                        <select class="form-control" id="agility" name="agility" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php 
+                            for ($i = 1.00; $i <= 60.00; $i += 0.01) {
+                                $value = number_format($i, 2, '.', ''); // Format menjadi 2 desimal
+                                echo "<option value='$value'>$value</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="vo2max" class="form-label">VO2max (Lari 15 Menit): (1-60)</label>
+                        <select class="form-control" id="vo2max" name="vo2max" required>
+                            <option value="">Pilih Nilai</option>
+                            <?php for ($i = 1; $i <= 60; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            } ?>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="strength_hand" class="form-label">Kekuatan Lengan (Hand Dynamometer): (1-100)</label>
-                <select class="form-control" id="strength_hand" name="strength_hand" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 100; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="strength_leg" class="form-label">Kekuatan Tungkai (Leg Dynamometer): (100-300)</label>
-                <select class="form-control" id="strength_leg" name="strength_leg" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 100; $i <= 300; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="endurance_abs" class="form-label">Daya Tahan Perut (Sit Up): (1-100)</label>
-                <select class="form-control" id="endurance_abs" name="endurance_abs" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 100; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="endurance_arm" class="form-label">Daya Tahan Lengan (Push Up): (1-100)</label>
-                <select class="form-control" id="endurance_arm" name="endurance_arm" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 100; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="endurance_leg" class="form-label">Daya Tahan Tungkai (Squat Jump): (1-100)</label>
-                <select class="form-control" id="endurance_leg" name="endurance_leg" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 100; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="power_leg" class="form-label">Power Tungkai (Vertical Jump): (1-100)</label>
-                <select class="form-control" id="power_leg" name="power_leg" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 100; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="power_arm" class="form-label">Power Lengan (Medicine Ball): (1.00 - 10.00 detik)</label>
-                <select class="form-control" id="power_arm" name="power_arm" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 10; $i++) {
-                        echo "<option value='" . number_format($i, 2) . "'>" . number_format($i, 2);
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="flexibility" class="form-label">Fleksibilitas (Flexometer): (1-30)</label>
-                <select class="form-control" id="flexibility" name="flexibility" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 30; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="agility" class="form-label">Kelincahan (Shuttle Run): (1.00 - 60.00 detik)</label>
-                <select class="form-control" id="agility" name="agility" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 60; $i++) {
-                        echo "<option value='" . number_format($i, 2) . "'>" . number_format($i, 2);
-                    } ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="vo2max" class="form-label">VO2max (Lari 15 Menit): (1-60)</label>
-                <select class="form-control" id="vo2max" name="vo2max" required>
-                    <option value="">Pilih Nilai</option>
-                    <?php for ($i = 1; $i <= 60; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                    } ?>
-                </select>
-            </div>
+
             <button type="submit" class="btn btn-warning w-100">Submit</button>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
         function validateForm() {
             let valid = true;

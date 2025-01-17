@@ -6,8 +6,46 @@
     <title>Login Page</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Google Fonts (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #343a40; /* Dark background */
+            color: #fff; /* White text for contrast */
+        }
+        .card {
+            border-radius: 10px;
+            background-color: #495057; /* Slightly lighter dark color for card */
+        }
+        .card-header {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .card-body {
+            background-color: #6c757d;
+        }
+        .form-control {
+            background-color: #495057;
+            color: #fff;
+            border-color: #6c757d;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            background-color: #495057;
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
 </head>
-<body class="bg-light">
+<body>
 
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 100vh;">

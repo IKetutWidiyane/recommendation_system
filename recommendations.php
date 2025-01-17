@@ -123,7 +123,7 @@
                 echo "</tbody></table>";
 
                 // Menampilkan komponen terlemah
-                echo "<h5>Komponen Terlemah:</h5>";
+                echo "<h5>Rekomendasi Peningkatan:</h5>";
                 if (!empty($weakest_components)) {
                     foreach ($weakest_components as $component_name => $category) {
                         echo "<p>$component_name - $category</p>";
@@ -142,7 +142,7 @@
         $conn->close();
         ?>
 
-        <a href="input.php" class="btn btn-primary btn-back w-100">Kembali ke Halaman Utama</a>
+        <a href="home.php" class="btn btn-primary btn-back w-100">Kembali ke Halaman Utama</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
